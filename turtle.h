@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 23:44:35 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 14:24:26 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:54:23 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@
 # include "mlx.h"
 
 #include "colours.h"
-
-# define WIDTH 1000
-# define HIGHT 1000
-
-# define PI 3.1415926535
+#include "defines.h"
 
 /* data structure for holding image data*/
 typedef struct	s_data
@@ -39,6 +35,8 @@ typedef struct	s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		width;
+	int		hight;
 }				t_data;
 
 typedef struct	s_ipoint
@@ -99,6 +97,7 @@ int			destroy(t_app *a);
 int			key_press(int keycode, t_app *a);
 int			mouse_hook(int action, int x, int y, t_app *a);
 int			render_next_frame(t_app *a);
+void	mouse_hold(int action, int x, int y, t_app *a);
 
 // map
 void		init_map(t_app *a);
@@ -109,4 +108,7 @@ void		screen_to_world(t_app *a, t_ipoint s, t_fpoint *w);
 t_ipoint	rworld_to_screen(t_app *a, t_fpoint w);
 t_fpoint	rscreen_to_world(t_app *a, t_ipoint s);
 
-#endif
+// events
+void	on_resise(t_app a, int x, int y);
+
+#endif /* turtle */

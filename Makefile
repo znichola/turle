@@ -6,11 +6,11 @@
 #    By: znichola <znichola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 18:49:24 by znichola          #+#    #+#              #
-#    Updated: 2022/11/28 10:04:14 by znichola         ###   ########.fr        #
+#    Updated: 2022/11/28 15:53:08 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SNAME	= main turtle drawing init hooks colours map
+SNAME	= main turtle drawing init hooks colours map events
 SRC		= $(addsuffix .c, $(SNAME))
 OBJ		= $(SRC:%.c=%.o)
 

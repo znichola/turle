@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 23:44:17 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 13:34:51 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:09:47 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int	main(void)
 	t_app	a;
 	
 	init_map(&a);
+	
+	// mlx_hook(a.mlx, ON_RESIZE, 0, on_resise, &a);
+
 
 	// put_circle(&img, 100, WIDTH/2, HIGHT/2);
 	// fill_screen(&a.data, BACKGROUND);
@@ -25,8 +28,8 @@ int	main(void)
 	// put_line(&img, (HIGHT/2), (WIDTH/2), 500, 500);
 	// mlx_put_image_to_window(a.mlx, a.mlx_win, a.data.img, 0, 0);
 
-	a.center.x = (HIGHT/2);
-	a.center.y = (WIDTH/2);
+	a.center.x = (a.data.hight/2);
+	a.center.y = (a.data.width/2);
 	a.mouse_left.x	= 400;
 	a.mouse_left.y = 200;
 	// put_line(&a.img, a.center, a.mouse);
@@ -37,8 +40,13 @@ int	main(void)
 
 	mlx_mouse_hook(a.mlx_win, mouse_hook, &a);
 	mlx_key_hook(a.mlx_win, key_press, &a);
-	mlx_hook(a.mlx_win, 17, 0, destroy, &a);
+	
+	mlx_hook(a.mlx_win, ON_DESTROY, 0, destroy, &a);
+
+	// mlx_hook(a.mlx_win, ON_MOUSEDOWN, 0, mouse_hold, &a);
+
 	mlx_loop_hook(a.mlx, render_next_frame, &a);
+
 	mlx_loop(a.mlx);
 	return (0);
 }
