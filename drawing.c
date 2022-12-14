@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 00:07:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 16:00:02 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/28 22:40:00 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	put_line(t_data *d, t_ipoint p1, t_ipoint p2)
 		while (i <= p2.y)
 		{
 			my_mlx_pixel_put(d, (int)((i - b) / m), i,
-								colour_lerp(p1.y, p2.y, i));
+								colour_ramp(p1.y, p2.y, i));
 			i++;
 		}
 	}
@@ -89,7 +89,7 @@ void	put_line(t_data *d, t_ipoint p1, t_ipoint p2)
 			while (i <= p2.x)
 			{
 				my_mlx_pixel_put(d, i, (int)(m * i + b),
-								colour_lerp(p1.x, p2.x, i));
+								colour_ramp(p1.x, p2.x, i));
 				i++;
 			}
 		}
@@ -105,7 +105,7 @@ void	put_line(t_data *d, t_ipoint p1, t_ipoint p2)
 			while (i <= p2.y)
 			{
 				my_mlx_pixel_put(d, (int)((i - b) / m), i,
-								colour_lerp(p1.y, p2.y, i));
+								colour_ramp(p1.y, p2.y, i));
 				i++;
 			}
 			

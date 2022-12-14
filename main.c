@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 23:44:17 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 16:09:47 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/14 13:03:15 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	main(void)
 	// put_line(&img, (HIGHT/2), (WIDTH/2), 500, 500);
 	// mlx_put_image_to_window(a.mlx, a.mlx_win, a.data.img, 0, 0);
 
-	a.center.x = (a.data.hight/2);
-	a.center.y = (a.data.width/2);
+	a.center.x = (400);
+	a.center.y = (400);
 	a.mouse_left.x	= 400;
 	a.mouse_left.y = 200;
 	// put_line(&a.img, a.center, a.mouse);

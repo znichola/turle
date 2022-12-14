@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:19:36 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 16:22:38 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/28 21:00:16 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ enum e_key {
 	KEY_S = 1,
 	KEY_D = 2,
 	KEY_F = 3,
-	KEY_UP		= 126,
-	KEY_DOWN	= 125,
-	KEY_LEFT	= 123,
-	KEY_RIGHT	= 124,
-	KEY_PLUS	= 69,
-	KEY_MINUS	= 78,
+	KEY_UP = 126,
+	KEY_DOWN = 125,
+	KEY_LEFT = 123,
+	KEY_RIGHT = 124,
+	KEY_PLUS = 69,
+	KEY_MINUS = 78,
 };
 
 #endif /* defines */

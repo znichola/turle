@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 08:19:33 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 10:00:34 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/28 21:22:31 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,49 @@ int	colour_lerp(int min, int max, int point)
 	
 	double	prct;
 	prct = (double)(point - min) / (max - min);
+	
 	return(create_trgb(0,
-						get_r(str_col) * (1 - prct) + get_r(end_col) * prct,
+						get_r(str_col) * (1 - prct) + get_r(end_col) *prct,
 						get_g(str_col) * (1 - prct) + get_g(end_col) * prct,
 						get_b(str_col) * (1 - prct) + get_b(end_col) * prct
 						));
 }
+
+// 0.0    |---:---^---:-->| 1.0				^ = 3 - 2
+//     [  :  ] [  :  ] [  :  ]				: = 3 - 1
+
+// 0.0    |---:---^---:---^---:-->| 1.0 	^ = 4 - 2	chunk_offset -> colour_switch_boundry
+//     [  :  ] [  :  ] [  :  ] [  :  ]		: = 4 - 1	chunk
+
+int	colour_ramp(int min, int max, int point)
+{
+	static const int	count = 5;
+	static int			pallet[count] = {PASTEL, PINK, LIGHT_BLUE, DEEP_BLUE, BACKGROUND};
+	// static int	pallet[3] = {PASTEL, PINK, LIGHT_BLUE};
+	double		prct;
+	double		chunk;
+	double		col_p;
+	int			col_i;
+
+	prct = (point - min) / (double)(max - min);
+	chunk = 1 / (double)(count - 1);
+	col_i = (int)(prct / (double)chunk);
+	col_p = prct - (col_i * chunk);
+
+	col_p = col_p / chunk;
+
+	return(create_trgb(0,
+					get_r(pallet[col_i]) * (1 - col_p) + get_r(pallet[col_i + 1]) * (col_p),
+					get_g(pallet[col_i]) * (1 - col_p) + get_g(pallet[col_i + 1]) * (col_p),
+					get_b(pallet[col_i]) * (1 - col_p) + get_b(pallet[col_i + 1]) * (col_p)
+					));
+}
+
+// >>> [ round((x/10.)/(1/3.)+0.33) for x in range(1, 11)]
+// [1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 2.0, 3.0, 3.0, 3.0]
+
+// >>> [ round((x/10.)/(1/3.)+(1/3.)) for x in range(1, 11)]
+// [1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 2.0, 3.0, 3.0, 3.0]
+// >>> [ ((x/20.)/.25) for x in range(1, 21)]
+// [0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8, 4.0]
+// [0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8, 4.0]

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 23:44:35 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 15:54:23 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/28 21:32:13 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void		fill_screen(t_data *d, int colour);
 
 // colours
 int			colour_lerp(int min, int max, int point);
+int			colour_ramp(int min, int max, int point);
 
 // init
 // void	init_map(t_app *a);
