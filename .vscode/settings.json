@@ -8,6 +8,8 @@
 		"vector": "c",
 		"algorithm": "c",
 		"chrono": "c",
-		"__locale": "c"
+		"__locale": "c",
+		"turtle.h": "c",
+		"stdio.h": "c"
 	}
 }

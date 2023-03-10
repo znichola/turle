@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turtle.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 23:44:35 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 21:32:13 by znichola         ###   ########.fr       */
+/*   Updated: 2023/03/10 23:40:30 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@
 # include <stdio.h> // strerror perror
 # include <unistd.h>
 # include <math.h>
-# include <stdlib.h> // malloc exit 
+# include <stdlib.h> // malloc exit
 
 # include "mlx.h"
 
 #include "colours.h"
 #include "defines.h"
+# include "controls.h"
 
 /* data structure for holding image data*/
 typedef struct	s_data

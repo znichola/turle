@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colours.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 08:19:33 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 21:22:31 by znichola         ###   ########.fr       */
+/*   Updated: 2023/03/10 23:22:09 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	get_b(int trgb)
 
 // linear interpolatoin
 // when there are more than one pixel colour
-// coord == 7.8 gives us 0.3 which 
+// coord == 7.8 gives us 0.3 which
 // indicates we are 30% of the way to pixel 8.0's center
 // double left_center = floor(coord - 0.5) + 0.5;
 // double dist = coord - left_center;
@@ -61,10 +61,10 @@ int	colour_lerp(int min, int max, int point)
 
 	str_col = LIGHT_BLUE;
 	end_col = PASTEL;
-	
+
 	double	prct;
 	prct = (double)(point - min) / (max - min);
-	
+
 	return(create_trgb(0,
 						get_r(str_col) * (1 - prct) + get_r(end_col) *prct,
 						get_g(str_col) * (1 - prct) + get_g(end_col) * prct,
@@ -81,7 +81,7 @@ int	colour_lerp(int min, int max, int point)
 int	colour_ramp(int min, int max, int point)
 {
 	static const int	count = 5;
-	static int			pallet[count] = {PASTEL, PINK, LIGHT_BLUE, DEEP_BLUE, BACKGROUND};
+	static const int	pallet[5] = {PASTEL, PINK, LIGHT_BLUE, DEEP_BLUE, BACKGROUND};
 	// static int	pallet[3] = {PASTEL, PINK, LIGHT_BLUE};
 	double		prct;
 	double		chunk;
