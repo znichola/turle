@@ -10,6 +10,8 @@
 		"chrono": "c",
 		"__locale": "c",
 		"turtle.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"colours.h": "c",
+		"mlx.h": "c"
 	}
 }

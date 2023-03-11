@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 00:07:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 22:40:00 by znichola         ###   ########.fr       */
+/*   Updated: 2023/03/11 00:28:23 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	fill_screen(t_data *d, int colour)
 {
-	char	*dst;
 	int		i;
 
 	i = 0;
@@ -50,7 +49,7 @@ void	put_line(t_data *d, t_ipoint p1, t_ipoint p2)
 	int	i;
 	double	m;
 	double	b;
-	
+
 	rise = p2.y - p1.y;
 	run = p2.x - p1.x;
 
@@ -108,7 +107,7 @@ void	put_line(t_data *d, t_ipoint p1, t_ipoint p2)
 								colour_ramp(p1.y, p2.y, i));
 				i++;
 			}
-			
+
 		}
 	}
 }

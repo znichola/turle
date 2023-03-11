@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:50:09 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/28 16:07:14 by znichola         ###   ########.fr       */
+/*   Updated: 2023/03/11 00:28:51 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	on_resise(t_app a, int x, int y)
 {
+	(void)a;
 	printf("x:%d, y:%d\n", x, y);
 }

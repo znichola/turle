@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 23:44:35 by znichola          #+#    #+#             */
-/*   Updated: 2023/03/10 23:40:30 by znichola         ###   ########.fr       */
+/*   Updated: 2023/03/11 00:18:34 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 
 # include "mlx.h"
 
-#include "colours.h"
-#include "defines.h"
+# include "colours.h"
+# include "defines.h"
 # include "controls.h"
 
 /* data structure for holding image data*/

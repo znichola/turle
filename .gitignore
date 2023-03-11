@@ -2,3 +2,4 @@ mlx
 scratch.c
 *.o
 .clang-format
+tester

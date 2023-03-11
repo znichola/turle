@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   cube.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 15:19:36 by znichola          #+#    #+#             */
-/*   Updated: 2023/03/11 01:05:07 by znichola         ###   ########.fr       */
+/*   Created: 2023/03/11 00:24:01 by znichola          #+#    #+#             */
+/*   Updated: 2023/03/11 01:04:46 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_H
-# define DEFINES_H
+#include "cube.h"
 
-# include "turtle.h"
+int	cube_render(t_mlx *app)
+{
+	put_circle(&app->image, 10, (t_ipoint){400, 400}, PASTEL);
+	// my_mlx_pixel_put(&app->image, 5, 5, PINK);
 
-# define WIDTH 800
-# define HIGHT 800
+	mlx_put_image_to_window(app->instance, app->win, app->image.img, 0, 0);
+	return (0);
+}
 
-# define PI 3.1415926535
-
-#endif /* defines */
+int	cube_destroy(t_mlx *app)
+{
+	mlx_destroy_window(app->instance, app->win);
+	exit(0);
+	return (0);
+}

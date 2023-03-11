@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 15:19:36 by znichola          #+#    #+#             */
-/*   Updated: 2023/03/11 01:05:07 by znichola         ###   ########.fr       */
+/*   Created: 2023/03/11 00:24:17 by znichola          #+#    #+#             */
+/*   Updated: 2023/03/11 00:52:59 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_H
-# define DEFINES_H
+#ifndef CUBE_H
+# define CUBE_H
 
+# include "mlx.h"
+# include "colours.h"
+# include "defines.h"
+# include "controls.h"
 # include "turtle.h"
 
-# define WIDTH 800
-# define HIGHT 800
+typedef	struct s_mlx
+{
+	void	*instance;
+	void	*win;
+	t_data	image;
+}	t_mlx;
 
-# define PI 3.1415926535
+int	cube_render(t_mlx *app);
+int	cube_destroy(t_mlx *app);
 
-#endif /* defines */
+#endif
