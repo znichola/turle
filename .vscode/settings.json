@@ -12,6 +12,8 @@
 		"turtle.h": "c",
 		"stdio.h": "c",
 		"colours.h": "c",
-		"mlx.h": "c"
+		"mlx.h": "c",
+		"ft_mat4x4.h": "c",
+		"keysym.h": "c"
 	}
 }

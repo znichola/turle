@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 18:49:24 by znichola          #+#    #+#              #
-#    Updated: 2023/03/11 01:09:04 by znichola         ###   ########.fr        #
+#    Updated: 2023/03/11 14:25:53 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ endif
 
 # 		 main
 TURTLE	= turtle drawing init hooks colours map events
-CUBE	= main cube
+CUBE	= main cube ft_vectors ft_mat4x4
 
 FILES	= $(addprefix turtle/, $(TURTLE)) $(addprefix cube/, $(CUBE))
 

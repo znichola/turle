@@ -6,11 +6,11 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:24:12 by znichola          #+#    #+#             */
-/*   Updated: 2023/03/11 02:16:06 by znichola         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:27:45 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "ft_vectors.h"
 #include "math.h"
 
 // magnetude is the scalar quantity of the vector

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 08:19:33 by znichola          #+#    #+#             */
-/*   Updated: 2023/03/10 23:22:09 by znichola         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:28:42 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,18 +88,27 @@ int	colour_ramp(int min, int max, int point)
 	double		col_p;
 	int			col_i;
 
+	// prct = (point - min) / (double)(max - min);
+	// chunk = 1 / (double)(count - 1);
+	// col_i = (int)(prct / (double)chunk);
+	// col_p = prct - (col_i * chunk);
+
+	// col_p = col_p / chunk;
+
+	if (max - min)
+		point = 0;
+	else
+		point = point % (max - min);
 	prct = (point - min) / (double)(max - min);
 	chunk = 1 / (double)(count - 1);
 	col_i = (int)(prct / (double)chunk);
-	col_p = prct - (col_i * chunk);
-
-	col_p = col_p / chunk;
+	col_p = (prct - (col_i * chunk)) / chunk;
 
 	return(create_trgb(0,
-					get_r(pallet[col_i]) * (1 - col_p) + get_r(pallet[col_i + 1]) * (col_p),
-					get_g(pallet[col_i]) * (1 - col_p) + get_g(pallet[col_i + 1]) * (col_p),
-					get_b(pallet[col_i]) * (1 - col_p) + get_b(pallet[col_i + 1]) * (col_p)
-					));
+			get_r(pallet[col_i]) * (1 - col_p) + get_r(pallet[col_i + 1]) * (col_p),
+			get_g(pallet[col_i]) * (1 - col_p) + get_g(pallet[col_i + 1]) * (col_p),
+			get_b(pallet[col_i]) * (1 - col_p) + get_b(pallet[col_i + 1]) * (col_p)
+		));
 }
 
 // >>> [ round((x/10.)/(1/3.)+0.33) for x in range(1, 11)]
