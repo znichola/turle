@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:24:17 by znichola          #+#    #+#             */
-/*   Updated: 2023/03/12 02:17:32 by znichola         ###   ########.fr       */
+/*   Updated: 2023/03/13 10:49:56 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_mlx
 
 	// 3d projection
 	t_mat4x4	*mat_proj;
+	t_num		f_theta;
 
 	// world . screen
 	t_ipoint	mouse;

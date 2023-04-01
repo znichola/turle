@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:24:30 by znichola          #+#    #+#             */
-/*   Updated: 2023/03/11 23:37:40 by znichola         ###   ########.fr       */
+/*   Updated: 2023/03/13 01:47:21 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_VECTORS_H
 
 // basic type for all spacial numbers
-typedef double	t_num;
+typedef float	t_num;
 
 // basic position in 3d space
 typedef struct s_v3

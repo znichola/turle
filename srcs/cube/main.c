@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:17:42 by znichola          #+#    #+#             */
-/*   Updated: 2023/03/12 02:34:22 by znichola         ###   ########.fr       */
+/*   Updated: 2023/03/13 11:09:35 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,36 +31,37 @@ int	main(void)
 // https://www.youtube.com/watch?v=ih20l3pJoeU
 	t_cube	cube = {
 		// south
-		(t_tris){(t_v3){0, 0, 0}, (t_v3){0, 100, 0}, (t_v3){100, 100, 0}},
-		(t_tris){(t_v3){0, 0, 0}, (t_v3){100, 100, 0}, (t_v3){100, 0, 0}},
+		(t_tris){(t_v3){0, 0, 0}, (t_v3){0, 1, 0}, (t_v3){1, 1, 0}},
+		(t_tris){(t_v3){0, 0, 0}, (t_v3){1, 1, 0}, (t_v3){1, 0, 0}},
 
 		// east
-		(t_tris){(t_v3){100, 0, 0}, (t_v3){100, 100, 0}, (t_v3){100, 100, 100}},
-		(t_tris){(t_v3){100, 0, 0}, (t_v3){100, 100, 100}, (t_v3){100, 0, 100}},
+		(t_tris){(t_v3){1, 0, 0}, (t_v3){1, 1, 0}, (t_v3){1, 1, 1}},
+		(t_tris){(t_v3){1, 0, 0}, (t_v3){1, 1, 1}, (t_v3){1, 0, 1}},
 
 		// north
-		(t_tris){(t_v3){100, 0, 100}, (t_v3){100, 100, 100}, (t_v3){0, 100, 100}},
-		(t_tris){(t_v3){100, 0, 100}, (t_v3){0, 100, 100}, (t_v3){0, 0, 100}},
+		(t_tris){(t_v3){1, 0, 1}, (t_v3){1, 1, 1}, (t_v3){0, 1, 1}},
+		(t_tris){(t_v3){1, 0, 1}, (t_v3){0, 1, 1}, (t_v3){0, 0, 1}},
 
 		// west
-		(t_tris){(t_v3){0, 0, 100}, (t_v3){0, 100, 100}, (t_v3){0, 100, 0}},
-		(t_tris){(t_v3){0, 0, 100}, (t_v3){0, 100, 0}, (t_v3){0, 0, 0}},
+		(t_tris){(t_v3){0, 0, 1}, (t_v3){0, 1, 1}, (t_v3){0, 1, 0}},
+		(t_tris){(t_v3){0, 0, 1}, (t_v3){0, 1, 0}, (t_v3){0, 0, 0}},
 
 		// top
-		(t_tris){(t_v3){0, 100, 0}, (t_v3){0, 100, 100}, (t_v3){100, 100, 100}},
-		(t_tris){(t_v3){0, 100, 0}, (t_v3){100, 100, 100}, (t_v3){100, 100, 0}},
+		(t_tris){(t_v3){0, 1, 0}, (t_v3){0, 1, 1}, (t_v3){1, 1, 1}},
+		(t_tris){(t_v3){0, 1, 0}, (t_v3){1, 1, 1}, (t_v3){1, 1, 0}},
 
 		// bottom
-		(t_tris){(t_v3){100, 0, 100}, (t_v3){0, 0, 100}, (t_v3){0, 0, 0}},
-		(t_tris){(t_v3){100, 0, 100}, (t_v3){0, 0, 0}, (t_v3){100, 0, 0}}
+		(t_tris){(t_v3){1, 0, 1}, (t_v3){0, 0, 1}, (t_v3){0, 0, 0}},
+		(t_tris){(t_v3){1, 0, 1}, (t_v3){0, 0, 0}, (t_v3){1, 0, 0}}
 		};
 
 	// projection matrix
 	t_num	f_near = 0.1;
-	t_num	f_far = 1000.0;
+	t_num	f_far = 10.0;
 	t_num	f_fov = 90.0;
 	t_num	f_aspect_ratio = app.image.width / app.image.hight;
 	t_num	f_fov_rad = 1.0 / tan(f_fov * 0.5 / 180 * PI);
+
 
 	t_mat4x4	mat_proj;
 
@@ -79,6 +80,7 @@ int	main(void)
 	app.mouse_left = (t_ipoint){0, 0};
 	app.mouse_right = (t_ipoint){0, 0};
 
+	app.f_theta = 0;
 
 	app.cube = &cube;
 	app.mat_proj = & mat_proj;
@@ -89,7 +91,9 @@ int	main(void)
 
 	mlx_hook(app.win, ON_DESTROY, 0, cube_destroy, &app);
 	// mlx_hook(app.win, ButtonRelease, ButtonReleaseMask, );
-	mlx_hook(app.win, 5, (1L<<3) | (1L<<13), cube_mouse_release_hook, &app);
+	// mlx_hook(app.win, 5, (1L<<3) | (1L<<13), cube_mouse_release_hook, &app);
+	mlx_hook(app.win, 5, 0, cube_mouse_release_hook, &app);
+
 	mlx_mouse_hook(app.win, cube_mouse_hook, &app);
 
 	mlx_loop_hook(app.instance, cube_render, &app);

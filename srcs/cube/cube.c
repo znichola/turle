@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:24:01 by znichola          #+#    #+#             */
-/*   Updated: 2023/03/12 02:38:18 by znichola         ###   ########.fr       */
+/*   Updated: 2023/03/13 11:06:21 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,68 @@ int	cube_render(t_mlx *app)
 
 	process_mouse_stuff(app);
 
+	t_mat4x4	mat_rot_z;
+	t_mat4x4	mat_rot_x;
+
+	app->f_theta += (t_num)0.01;
+
+	// rotation z
+	mat_rot_z.m[0][0] = cosf(app->f_theta);
+	mat_rot_z.m[0][1] = sinf(app->f_theta);
+	mat_rot_z.m[1][0] = -sinf(app->f_theta);
+	mat_rot_z.m[1][1] = cosf(app->f_theta);
+	mat_rot_z.m[2][2] = (t_num)1;
+	mat_rot_z.m[3][3] = (t_num)1;
+
+	// rotation X
+	mat_rot_x.m[0][0] = (t_num)1;
+	mat_rot_x.m[1][1] = cosf(app->f_theta * 0.5f);
+	mat_rot_x.m[1][2] = sinf(app->f_theta * 0.5f);
+	mat_rot_x.m[2][1] = -sinf(app->f_theta * 0.5f);
+	mat_rot_x.m[2][2] = cosf(app->f_theta * 0.5f);
+	mat_rot_x.m[3][3] = (t_num)1;
+
 	for (int i = 0; i < 12; i++)
 	{
 		t_tris	*input;
 		t_tris	tri_projected;
 		t_tris	tri_translated;
+		t_tris	tri_rotated_z;
+		t_tris	tri_rotated_zx;
 
 		input = &app->cube->mesh[i];
-		tri_translated = *input;
-		tri_translated.a.z = input->a.z + 600;
-		tri_translated.b.z = input->b.z + 600;
-		tri_translated.c.z = input->c.z + 600;
+
+		// rotate in the z axis
+		v3_multiply_matrix(&input->a, &tri_rotated_z.a, &mat_rot_z);
+		v3_multiply_matrix(&input->b, &tri_rotated_z.b, &mat_rot_z);
+		v3_multiply_matrix(&input->c, &tri_rotated_z.c, &mat_rot_z);
+
+		// input = &tri_rotated_z;
+		// rotate in the x axis
+		v3_multiply_matrix(&input->a, &tri_rotated_zx.a, &mat_rot_x);
+		v3_multiply_matrix(&input->b, &tri_rotated_zx.b, &mat_rot_x);
+		v3_multiply_matrix(&input->c, &tri_rotated_zx.c, &mat_rot_x);
+		// v3_multiply_matrix(&tri_rotated_z.a, &tri_rotated_zx.a, &mat_rot_x);
+		// v3_multiply_matrix(&tri_rotated_z.b, &tri_rotated_zx.b, &mat_rot_x);
+		// v3_multiply_matrix(&tri_rotated_z.c, &tri_rotated_zx.c, &mat_rot_x);
+
+		// offset into the screen
+		tri_translated = tri_rotated_zx;
+		// *input = tri_rotated_zx;
+		// tri_translated = *input;
+
+		// printf("(%f, %f, %f)\n", tri_translated.a.x, tri_translated.a.y, tri_translated.a.z);
+
+		tri_translated.a.z = input->a.z + 6;
+		tri_translated.a.x = input->a.x - 0.5;
+		tri_translated.b.z = input->b.z + 6;
+		tri_translated.b.x = input->b.x - 0.5;
+		tri_translated.c.z = input->c.z + 6;
+		tri_translated.c.x = input->c.x - 0.5;
 
 		input = &tri_translated;
 
+		// project triangles from 3D to 2D
 		v3_multiply_matrix(&input->a, &tri_projected.a, app->mat_proj);
 		v3_multiply_matrix(&input->b, &tri_projected.b, app->mat_proj);
 		v3_multiply_matrix(&input->c, &tri_projected.c, app->mat_proj);

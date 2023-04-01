@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:24:12 by znichola          #+#    #+#             */
-/*   Updated: 2023/03/11 13:27:45 by znichola         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:47:20 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,7 @@ t_v3 v3_multiply(t_v3 v, t_num s)
 
 t_v3 v3_divide(t_v3 v, t_num s)
 {
+	if (s == 0)
+		return (v);
 	return ((t_v3){v.x / s, v.y / s, v.z / s});
 }

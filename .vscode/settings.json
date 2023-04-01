@@ -14,6 +14,7 @@
 		"colours.h": "c",
 		"mlx.h": "c",
 		"ft_mat4x4.h": "c",
-		"keysym.h": "c"
+		"keysym.h": "c",
+		"string.h": "c"
 	}
 }
